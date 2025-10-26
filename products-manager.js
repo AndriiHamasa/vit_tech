@@ -274,6 +274,13 @@ class ProductsManager {
      * Переход на детальную страницу товара
      */
     openProductDetail(productId) {
+        // Сохраняем текущую позицию скролла
+        const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+        localStorage.setItem('scrollPosition', scrollPosition);
+        
+        // Сохраняем URL страницы откуда пришли
+        localStorage.setItem('previousPage', window.location.href);
+        
         // Сохраняем ID товара в localStorage для детальной страницы
         localStorage.setItem('selectedProductId', productId);
         
@@ -421,3 +428,58 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Products manager initialized for category:', categoryId);
     }
 });
+
+// Восстановление позиции скролла при возврате
+// document.addEventListener('DOMContentLoaded', () => {
+//     const savedScroll = localStorage.getItem('scrollPosition');
+//     const fromDetailPage = sessionStorage.getItem('returnedFromDetail');
+    
+//     if (savedScroll && fromDetailPage === 'true') {
+//         // Небольшая задержка чтобы товары успели загрузиться
+//         setTimeout(() => {
+//             window.scrollTo({
+//                 top: parseInt(savedScroll),
+//                 behavior: 'instant' // Без анимации
+//             });
+            
+//             // Очищаем флаг
+//             sessionStorage.removeItem('returnedFromDetail');
+//         }, 100);
+//     }
+// });
+
+// Восстановление позиции скролла при возврате
+document.addEventListener('DOMContentLoaded', () => {
+    const savedScroll = localStorage.getItem('scrollPosition');
+    const fromDetailPage = sessionStorage.getItem('returnedFromDetail');
+    
+    if (savedScroll && fromDetailPage === 'true') {
+        // Ждём пока товары загрузятся
+        const waitForProducts = setInterval(() => {
+            const products = document.querySelectorAll('.product-card');
+            
+            // Когда товары появились
+            if (products.length > 0) {
+                clearInterval(waitForProducts);
+                
+                // Восстанавливаем скролл
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: parseInt(savedScroll),
+                        behavior: 'instant'
+                    });
+                    
+                    // Очищаем флаг
+                    sessionStorage.removeItem('returnedFromDetail');
+                }, 50);
+            }
+        }, 100);
+        
+        // Таймаут на случай если что-то пошло не так
+        setTimeout(() => {
+            clearInterval(waitForProducts);
+            sessionStorage.removeItem('returnedFromDetail');
+        }, 5000);
+    }
+});
+

@@ -5,7 +5,9 @@
 
 const API_CONFIG = {
     // Когда запускаешь бэк локально
-    BASE_URL: 'https://web-production-7d99b.up.railway.app/api',
+    // BASE_URL: 'https://web-production-7d99b.up.railway.app/api',
+    BASE_URL: 'http://127.0.0.1:8000/api',
+    
     
     // Когда задеплоишь бэк, поменяй на:
     // BASE_URL: 'https://your-backend.com/api',

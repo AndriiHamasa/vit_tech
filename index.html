@@ -175,7 +175,7 @@
           var style = document.createElement("style");
           style.type = "text/css";
           style.innerHTML =
-            "@media screen and (min-width: 980px) {.t-records {opacity: 0;}.t-records_animated {-webkit-transition: opacity ease-in-out .2s;-moz-transition: opacity ease-in-out .2s;-o-transition: opacity ease-in-out .2s;transition: opacity ease-in-out .2s;}.t-records.t-records_visible {opacity: 1;}}";
+            "@media screen and (min-width: 980px) {.t-records {opacity: 1;}.t-records_animated {-webkit-transition: opacity ease-in-out .2s;-moz-transition: opacity ease-in-out .2s;-o-transition: opacity ease-in-out .2s;transition: opacity ease-in-out .2s;}.t-records.t-records_visible {opacity: 1;}}";
           document.getElementsByTagName("head")[0].appendChild(style);
           function t_setvisRecs() {
             var alr = document.querySelectorAll(".t-records");
@@ -224,7 +224,7 @@
         <div
           id="nav1206540016"
           class="t446 t446__positionstatic"
-          style="background-color: rgba(21, 21, 21, 1); height: 135px"
+          style="background-color: #000000; height: 135px"
           data-bgcolor-hex="#151515"
           data-bgcolor-rgba="rgba(21,21,21,1)"
           data-navmarker="nav1206540016marker"
@@ -235,20 +235,25 @@
           data-bgopacity="1"
           data-menu="yes"
         >
-          <div class="t446__maincontainer" style="height: 135px">
-            <div class="t446__logowrapper">
-              <div class="t446__logowrapper2">
-                <div style="display: block">
+        <!--rgba(21, 21, 21, 1)-->
+          <div class="t446__maincontainer" style="height: 135px; background-color: #000000;">
+            <div class="t446__logowrapper" style="background-color: #000000;">
+              <div class="t446__logowrapper2" style="background-color: #000000;">
+                <!-- <div style="display: block">
                   <a href="/">
                     <img
                       class="t446__imglogo"
-                      src="images/photo_2025-08-06_16-.jpg"
+                      src="images/tech_vit_logo.jpg"   
                       imgfield="img"
                       style="min-width: 150px"
                       alt=""
                     />
                   </a>
-                </div>
+                </div> -->
+                <div style="display: block; background-color: #000000;">
+                  <a href="/" style="display: block; height: 80px; z-index: 999; background-image: url('images/tech_vit_logo.jpg'); background-repeat: repeat-x; background-position: left center; background-size: auto 100%;">
+                  </a>
+              </div>
               </div>
             </div>
             <div class="t446__rightwrapper" style=""></div>
@@ -443,7 +448,7 @@
                       Олег<br />(Languages:RU,UA,EN)
                     </div>
                   </div>
-                  <div
+                  <!-- <div
                     class="t1056__text t-text t-text_md"
                     field="li_descr__8614859096040"
                   >
@@ -460,20 +465,20 @@
                       "
                       >Телеграм Олега</a
                     ><br />tel: +380934606070 (whatsapp, viber)
-                  </div>
+                  </div> -->
                 </div>
               </div>
               <div class="t1056__col t-col t-col_6">
                 <div class="t1056__col-wrapper">
-                  <div
+                  <!-- <div
                     class="t1056__name t-name t-name_md"
                     field="li_title__1758014015123"
                   >
                     <div style="font-size: 20px" data-customstyle="yes">
                       Виталий<br />(Languages:RU,UA,EN)
                     </div>
-                  </div>
-                  <div
+                  </div> -->
+                  <!-- <div
                     class="t1056__text t-text t-text_md"
                     field="li_descr__1758014015123"
                   >
@@ -490,7 +495,27 @@
                       "
                       >Телеграм Виталия</a
                     ><br />tel: +380962563843 (whatsapp, viber)
-                  </div>
+                  </div> -->
+                  <!-- new -->
+                  <div
+                  class="t1056__text t-text t-text_md"
+                  field="li_descr__8614859096040"
+                >
+                  <a
+                    href="https://t.me/olegvision8"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    style="
+                      color: rgb(0, 7, 255);
+                      border-bottom-color: rgb(0, 7, 255);
+                      border-bottom-style: solid;
+                      box-shadow: none;
+                      text-decoration: none;
+                    "
+                    >Телеграм Олега</a
+                  ><br />tel: +380934606070 (whatsapp, viber)
+                </div>
+                   <!-- new end -->
                 </div>
               </div>
             </div>
@@ -571,10 +596,10 @@
               </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="gaminglaptop/index.html">
+              <!-- <a class="t405__link category-disabled" href="#">    gaminglaptop/index.html 
                 <div class="t405__imgbox" style="height: 150px">
                   <div
-                    class="t405__img t-bgimg"
+                    class="t405__img t-bgimg category-disabled"
                     data-original="https://static.tildacdn.net/tild6533-6431-4631-a635-306331616561/photo_2025-08-21_13-.jpg"
                     style="
                       background-image: url('images/photo_2025-08-21_13-.jpg');
@@ -588,10 +613,35 @@
                   </div>
                   <div class="t405__title t-name">Игровые ноутбуки</div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild6533-6431-4631-a635-306331616561/photo_2025-08-21_13-.jpg"
+                        style="background-image: url('images/photo_2025-08-21_13-.jpg'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Игровые ноутбуки</div>
+                </div>
+            </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="tv/index.html">
+              <!-- <a class="t405__link" href="tv/index.html">
                 <div class="t405__imgbox" style="height: 150px">
                   <div
                     class="t405__img t-bgimg"
@@ -606,10 +656,35 @@
                   </div>
                   <div class="t405__title t-name">Телевизоры</div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild6135-3834-4530-b461-393033356563/85.JPG"
+                        style="background-image: url('images/85.JPG'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Телевизоры</div>
+                </div>
+            </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="autoparts/index.html">
+              <!-- <a class="t405__link" href="autoparts/index.html">
                 <div class="t405__imgbox" style="height: 150px">
                   <div
                     class="t405__img t-bgimg"
@@ -626,10 +701,35 @@
                     Автозапчасти категории "А" и "С"
                   </div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild3235-3731-4634-a233-356639643437/a_c.jpg"
+                        style="background-image: url('images/a_c.jpg'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Автозапчасти категории "А" и "С"</div>
+                </div>
+            </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="autopartsabc/index.html">
+              <!-- <a class="t405__link" href="autopartsabc/index.html">
                 <div class="t405__imgbox" style="height: 150px">
                   <div
                     class="t405__img t-bgimg"
@@ -648,10 +748,35 @@
                     Автозапчасти категории "А"/"В"/"С"
                   </div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild3636-6230-4932-b038-376132333862/photo_2025-10-02_14-.jpg"
+                        style="background-image: url('images/photo_2025-10-02_14-.jpg'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Автозапчасти категории "А"/"В"/"С"</div>
+                </div>
+            </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="homestuff/index.html">
+              <!-- <a class="t405__link" href="homestuff/index.html">
                 <div class="t405__imgbox" style="height: 150px">
                   <div
                     class="t405__img t-bgimg"
@@ -666,10 +791,35 @@
                   </div>
                   <div class="t405__title t-name">Товары для дома</div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild3331-3233-4165-b030-663230306432/1111.jpg"
+                        style="background-image: url('images/1111.jpg'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Товары для дома</div>
+                </div>
+            </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="safety/index.html">
+              <!-- <a class="t405__link" href="safety/index.html">
                 <div class="t405__imgbox" style="height: 150px">
                   <div
                     class="t405__img t-bgimg"
@@ -684,10 +834,35 @@
                   </div>
                   <div class="t405__title t-name">Рабочая одежда и обувь</div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild3933-6433-4337-a433-383733653562/o7.JPG"
+                        style="background-image: url('images/o7.JPG'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Рабочая одежда и обувь</div>
+                </div>
+            </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="outfit/index.html">
+              <!-- <a class="t405__link" href="outfit/index.html">
                 <div class="t405__imgbox" style="height: 150px">
                   <div
                     class="t405__img t-bgimg"
@@ -704,10 +879,35 @@
                     Повседневная одежда и обувь
                   </div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild6662-3362-4230-b665-356166646533/3333.jpg"
+                        style="background-image: url('images/3333.jpg'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Повседневная одежда и обувь</div>
+                </div>
+            </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="server/index.html">
+              <!-- <a class="t405__link" href="server/index.html">
                 <div class="t405__imgbox" style="height: 150px">
                   <div
                     class="t405__img t-bgimg"
@@ -724,10 +924,35 @@
                   </div>
                   <div class="t405__title t-name">Сервер для бизнеса</div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild6263-6330-4234-b932-636239643934/photo_2025-08-14_10-.jpg"
+                        style="background-image: url('images/photo_2025-08-14_10-.jpg'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Сервер для бизнеса</div>
+                </div>
+            </a>
             </div>
             <div class="t405__col t-col t-col_2 t-align_center">
-              <a class="t405__link" href="/volant">
+              <!-- <a class="t405__link" href="/volant">
                 <div class="t405__imgbox" style="height: 150px">
                   <div
                     class="t405__img t-bgimg"
@@ -744,7 +969,32 @@
                   </div>
                   <div class="t405__title t-name">Рули на BMW</div>
                 </div>
-              </a>
+              </a> -->
+              <a class="t405__link category-disabled" href="#" style="position: relative; pointer-events: none; cursor: not-allowed;">
+                <div class="t405__imgbox" style="height: 150px; position: relative;">
+                    <!-- Серый overlay -->
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255, 255, 255, 0.2); backdrop-filter: blur(2px); z-index: 10;"></div>
+                    
+                    <!-- Текст "Немає у наявності" -->
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #666; font-size: 16px; font-weight: 700; z-index: 11; text-align: center;">
+                        Нет в наличии 
+                    </div>
+                    
+                    <!-- Затемненная картинка -->
+                    <div
+                        class="t405__img t-bgimg"
+                        data-original="https://static.tildacdn.net/tild6661-3538-4634-a133-363164626365/photo_2025-08-21_14-.jpg"
+                        style="background-image: url('images/photo_2025-08-21_14-.jpg'); opacity: 0.3; filter: grayscale(100%);"
+                    ></div>
+                    <div class="t405__separator"></div>
+                </div>
+                <div class="t405__textwrapper">
+                    <div class="t405__uptitle t-uptitle">
+                        <span class="t405__tag"></span>
+                    </div>
+                    <div class="t405__title t-name" style="color: #999;">Рули на BMW</div>
+                </div>
+            </a>
             </div>
           </div>
         </div>
@@ -1048,7 +1298,7 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                 <div class="t825__text-wrapper">
                   <div class="t825__title t-name t-name_xl">Контакты</div>
                 </div>
-                <div class="t825__messenger-wrapper">
+                <div class="t825__messenger-wrapper" style="display: grid; grid-template-columns: 1fr;">
                   <!-- new soclinks -->
                   <div class="t825__messenger-block">
                     <a
@@ -1073,10 +1323,10 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                         ></path></svg
                     ></a>
                     <div class="t825__messenger-descr t-descr t-descr_xs">
-                      Олег (Languages:RU,UA,CZ)
+                      Олег (Languages:RU,UA,EN)
                     </div>
                   </div>
-                  <div class="t825__messenger-block">
+                  <!-- <div class="t825__messenger-block">
                     <a
                       href="tel:+380962563843"
                       class="t825__messenger t825__phone t-name t-name_lg"
@@ -1101,7 +1351,7 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                     <div class="t825__messenger-descr t-descr t-descr_xs">
                       Виталий (Languages:RU,UA,EN)
                     </div>
-                  </div>
+                  </div> -->
                   <div class="t825__messenger-block">
                     <a
                       href="https://t.me/olegvision8"
@@ -1125,10 +1375,10 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                         ></path></svg
                     ></a>
                     <div class="t825__messenger-descr t-descr t-descr_xs">
-                      Telegram Олега
+                      Telegram
                     </div>
                   </div>
-                  <div class="t825__messenger-block">
+                  <!-- <div class="t825__messenger-block">
                     <a
                       href="https://t.me/vitalya057"
                       class="t825__messenger t825__telegram t-name t-name_lg"
@@ -1153,7 +1403,7 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                     <div class="t825__messenger-descr t-descr t-descr_xs">
                       Telegram Виталия
                     </div>
-                  </div>
+                  </div> -->
                   <div class="t825__messenger-block">
                     <a
                       href="https://wa.me/380934606070"
@@ -1176,10 +1426,10 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                         </g></svg
                     ></a>
                     <div class="t825__messenger-descr t-descr t-descr_xs">
-                      WhatsApp Олега
+                      WhatsApp
                     </div>
                   </div>
-                  <div class="t825__messenger-block">
+                  <!-- <div class="t825__messenger-block">
                     <a
                       href="https://wa.me/380962563843"
                       class="t825__messenger t825__whatsapp t-name t-name_lg"
@@ -1203,7 +1453,7 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                     <div class="t825__messenger-descr t-descr t-descr_xs">
                       WhatsApp Виталия
                     </div>
-                  </div>
+                  </div> -->
                   <div class="t825__messenger-block">
                     <a
                       href="+380934606070"
@@ -1227,10 +1477,10 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                         ></path></svg
                     ></a>
                     <div class="t825__messenger-descr t-descr t-descr_xs">
-                      Viber Олега
+                        Viber
                     </div>
                   </div>
-                  <div class="t825__messenger-block">
+                  <!-- <div class="t825__messenger-block">
                     <a
                       href="+380962563843"
                       class="t825__messenger t825__viber t-name t-name_lg"
@@ -1255,7 +1505,7 @@ c-0.589,0.583-1.538,0.58-2.121-0.008l-6.994-7.049L25.5,36.033z"
                     <div class="t825__messenger-descr t-descr t-descr_xs">
                       Viber Виталия
                     </div>
-                  </div>
+                  </div> -->
                   <!-- /new soclinks -->
                 </div>
               </div>

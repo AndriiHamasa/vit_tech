@@ -130,6 +130,9 @@ class ProductDetailManager {
         
         // Инициализируем слайдер для мобилок
         this.initMobileSlider();
+
+        // НОВОЕ: Инициализируем кнопки "Назад"
+        this.initBackButtons();
     }
 
     /**
@@ -173,10 +176,62 @@ class ProductDetailManager {
     /**
  * Генерация HTML страницы
  */
+    // generateHTML() {
+    //     const images = this.product.images || [];
+
+    //     return `
+    //         <div class="product-detail-layout">
+    //             <!-- ЛЕВАЯ КОЛОНКА: Галерея для десктопа -->
+    //             <div class="product-gallery">
+    //                 ${this.generateGalleryHTML(images)}
+    //             </div>
+
+    //             <!-- Слайдер для мобилок -->
+    //             <div class="product-slider">
+    //                 ${this.generateSliderHTML(images)}
+    //             </div>
+
+    //             <!-- ПРАВАЯ КОЛОНКА: Информация о товаре -->
+    //             <div class="product-detail-info">
+    //                 ${this.product.category_name ? `
+    //                     <div class="product-detail-category">${this.product.category_name}</div>
+    //                 ` : ''}
+                    
+    //                 <h1 class="product-detail-title">${this.product.title}</h1>
+                    
+    //                 <div class="product-detail-price">${this.formatPrice(this.product.price)}</div>
+                    
+    //                 ${this.product.description ? `
+    //                     <div class="product-detail-description">${this.product.description}</div>
+    //                 ` : ''}
+                    
+    //                 ${this.generateCharacteristicsHTML()}
+    //             </div>
+    //         </div>
+    //     `;
+    // }
+    /**
+ * Генерация HTML страницы
+ */
     generateHTML() {
         const images = this.product.images || [];
 
         return `
+            <!-- Кнопка "Назад" -->
+            <div class="product-back-button">
+                <button class="back-btn" id="back-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Назад к товарам</span>
+                </button>
+                <button class="close-btn" id="close-btn" title="Закрыть">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+            
             <div class="product-detail-layout">
                 <!-- ЛЕВАЯ КОЛОНКА: Галерея для десктопа -->
                 <div class="product-gallery">
@@ -1007,6 +1062,44 @@ class ProductDetailManager {
                 </div>
             `;
         }
+    }
+
+    /**
+     * Инициализация кнопок возврата
+     */
+    initBackButtons() {
+        const backBtn = document.getElementById('back-btn');
+        const closeBtn = document.getElementById('close-btn');
+        
+        const goBack = () => {
+            const previousPage = localStorage.getItem('previousPage');
+            
+            if (previousPage) {
+                // Устанавливаем флаг что возвращаемся
+                sessionStorage.setItem('returnedFromDetail', 'true');
+                
+                // Возвращаемся на предыдущую страницу
+                window.location.href = previousPage;
+            } else {
+                // Если нет сохранённой страницы - идём назад в истории
+                window.history.back();
+            }
+        };
+        
+        if (backBtn) {
+            backBtn.addEventListener('click', goBack);
+        }
+        
+        if (closeBtn) {
+            closeBtn.addEventListener('click', goBack);
+        }
+        
+        // Бонус: Навигация с клавиатуры (Escape = закрыть)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                goBack();
+            }
+        });
     }
 }
 
