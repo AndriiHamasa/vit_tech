@@ -146,9 +146,23 @@ class ProductsManager {
         card.dataset.productId = product.id;
 
         // Получаем первое изображение
-        const mainImage = product.images && product.images.length > 0
-            ? product.images[0].image
-            : '/images/placeholder.jpg'; // Путь к заглушке
+        // const mainImage = product.images && product.images.length > 0
+        //     ? product.images[0].image
+        //     : '/images/placeholder.jpg'; // Путь к заглушке
+
+        // Получаем правильный URL картинки
+        let mainImage = '/images/placeholder.jpg';
+        if (product.images && product.images.length > 0) {
+            let imageUrl = product.images[0].image;
+            
+            // Фикс склеенных URL
+            if (imageUrl.includes('https://') && imageUrl.match(/https:\/\//g).length > 1) {
+                const parts = imageUrl.split('https://');
+                imageUrl = 'https://' + parts[2];
+            }
+            
+            mainImage = imageUrl;
+        }
 
         // Определяем есть ли бейдж
         let badgeHTML = '';
@@ -190,7 +204,7 @@ class ProductsManager {
         
         // Форматируем число с разделителями тысяч
         const formatted = Number(price).toLocaleString('ru-RU');
-        return `${formatted} ₴`; // Можешь изменить валюту
+        return `${formatted} €`; // Можешь изменить валюту
     }
 
     /**
