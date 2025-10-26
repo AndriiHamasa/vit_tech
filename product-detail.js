@@ -15,12 +15,24 @@ class ProductDetailManager {
     /**
      * Исправление URL изображений
      */
+    // fixImageUrl(url) {
+    //     if (!url) return '/images/placeholder.jpg';
+        
+    //     if (url.includes('https://') && url.match(/https:\/\//g).length > 1) {
+    //         const parts = url.split('https://');
+    //         return 'https://' + parts[2];
+    //     }
+        
+    //     return url;
+    // }
     fixImageUrl(url) {
         if (!url) return '/images/placeholder.jpg';
         
-        if (url.includes('https://') && url.match(/https:\/\//g).length > 1) {
-            const parts = url.split('https://');
-            return 'https://' + parts[2];
+        if (url.includes('https') && url.split('https').length > 2) {
+            const parts = url.split('https');
+            let secondPart = parts[2];
+            secondPart = secondPart.replace('%3A/', '://');
+            return 'https' + secondPart;
         }
         
         return url;
@@ -291,6 +303,73 @@ class ProductDetailManager {
     //         ${thumbnailsHTML}
     //     `;
     // }
+    // generateGalleryHTML(images) {
+    //     if (images.length === 0) {
+    //         return `
+    //             <div class="product-main-image-wrapper">
+    //                 <img 
+    //                     src="/images/placeholder.jpg" 
+    //                     alt="${this.product.title}"
+    //                     class="product-main-image"
+    //                     id="main-image"
+    //                 >
+    //             </div>
+    //         `;
+    //     }
+    
+    //     // Фиксим все URL
+    //     const fixedImages = images.map(img => ({
+    //         ...img,
+    //         image: this.fixImageUrl(img.image)
+    //     }));
+    
+    //     const mainImage = fixedImages[0];
+        
+    //     const navButtons = fixedImages.length > 1 ? `
+    //         <button class="gallery-nav-btn gallery-nav-prev" id="gallery-prev">‹</button>
+    //         <button class="gallery-nav-btn gallery-nav-next" id="gallery-next">›</button>
+    //     ` : '';
+    
+    //     const counter = fixedImages.length > 1 ? `
+    //         <div class="gallery-counter">
+    //             <span id="current-image">1</span> / ${fixedImages.length}
+    //         </div>
+    //     ` : '';
+    
+    //     let thumbnailsHTML = '';
+    //     if (fixedImages.length > 1) {
+    //         thumbnailsHTML = `
+    //             <div class="product-thumbnails">
+    //                 ${fixedImages.map((img, index) => `
+    //                     <img 
+    //                         src="${img.image}" 
+    //                         alt="Фото ${index + 1}"
+    //                         class="product-thumbnail ${index === 0 ? 'active' : ''}"
+    //                         data-index="${index}"
+    //                     >
+    //                 `).join('')}
+    //             </div>
+    //         `;
+    //     }
+    
+    //     // Сохраняем исправленные изображения
+    //     this.product.images = fixedImages;
+    
+    //     return `
+    //         <div class="product-main-image-wrapper">
+    //             <img 
+    //                 src="${mainImage.image}" 
+    //                 alt="${this.product.title}"
+    //                 class="product-main-image"
+    //                 id="main-image"
+    //             >
+    //             ${navButtons}
+    //             ${counter}
+    //         </div>
+    //         ${thumbnailsHTML}
+    //     `;
+    // }
+
     generateGalleryHTML(images) {
         if (images.length === 0) {
             return `
@@ -305,10 +384,10 @@ class ProductDetailManager {
             `;
         }
     
-        // Фиксим все URL
+        // ИСПРАВЛЯЕМ ВСЕ URL
         const fixedImages = images.map(img => ({
             ...img,
-            image: this.fixImageUrl(img.image)
+            image: fixImageUrl(img.image)
         }));
     
         const mainImage = fixedImages[0];
@@ -334,13 +413,14 @@ class ProductDetailManager {
                             alt="Фото ${index + 1}"
                             class="product-thumbnail ${index === 0 ? 'active' : ''}"
                             data-index="${index}"
+                            onerror="this.src='/images/placeholder.jpg'"
                         >
                     `).join('')}
                 </div>
             `;
         }
     
-        // Сохраняем исправленные изображения
+        // СОХРАНЯЕМ исправленные изображения в this.product
         this.product.images = fixedImages;
     
         return `
@@ -350,6 +430,7 @@ class ProductDetailManager {
                     alt="${this.product.title}"
                     class="product-main-image"
                     id="main-image"
+                    onerror="this.src='/images/placeholder.jpg'"
                 >
                 ${navButtons}
                 ${counter}
@@ -371,10 +452,10 @@ class ProductDetailManager {
             `;
         }
     
-        // Фиксим все URL
+        // ИСПРАВЛЯЕМ ВСЕ URL
         const fixedImages = images.map(img => ({
             ...img,
-            image: this.fixImageUrl(img.image)
+            image: fixImageUrl(img.image)
         }));
     
         const counter = fixedImages.length > 1 ? `
@@ -405,12 +486,67 @@ class ProductDetailManager {
                         src="${img.image}" 
                         alt="Фото ${index + 1}"
                         class="product-slider-image"
+                        onerror="this.src='/images/placeholder.jpg'"
                     >
                 `).join('')}
             </div>
             ${dotsHTML}
         `;
     }
+    
+    // generateSliderHTML(images) {
+    //     if (images.length === 0) {
+    //         return `
+    //             <div class="product-slider-track">
+    //                 <img 
+    //                     src="/images/placeholder.jpg" 
+    //                     alt="${this.product.title}"
+    //                     class="product-slider-image"
+    //                 >
+    //             </div>
+    //         `;
+    //     }
+    
+    //     // Фиксим все URL
+    //     const fixedImages = images.map(img => ({
+    //         ...img,
+    //         image: this.fixImageUrl(img.image)
+    //     }));
+    
+    //     const counter = fixedImages.length > 1 ? `
+    //         <div class="product-slider-counter">
+    //             <span id="slider-current">1</span> / ${fixedImages.length}
+    //         </div>
+    //     ` : '';
+    
+    //     const navButtons = fixedImages.length > 1 ? `
+    //         <button class="slider-nav-btn slider-nav-prev" id="slider-prev">‹</button>
+    //         <button class="slider-nav-btn slider-nav-next" id="slider-next">›</button>
+    //     ` : '';
+    
+    //     const dotsHTML = fixedImages.length > 1 ? `
+    //         <div class="product-slider-dots">
+    //             ${fixedImages.map((_, index) => `
+    //                 <span class="slider-dot ${index === 0 ? 'active' : ''}" data-index="${index}"></span>
+    //             `).join('')}
+    //         </div>
+    //     ` : '';
+    
+    //     return `
+    //         ${counter}
+    //         ${navButtons}
+    //         <div class="product-slider-track" id="slider-track">
+    //             ${fixedImages.map((img, index) => `
+    //                 <img 
+    //                     src="${img.image}" 
+    //                     alt="Фото ${index + 1}"
+    //                     class="product-slider-image"
+    //                 >
+    //             `).join('')}
+    //         </div>
+    //         ${dotsHTML}
+    //     `;
+    // }
     
     // formatPrice(price) {
     //     if (!price) return 'Цена не указана';

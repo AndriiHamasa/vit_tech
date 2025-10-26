@@ -3,6 +3,26 @@
  * Используется на страницах категорий
  */
 
+function fixImageUrl(url) {
+    if (!url) return '/images/placeholder.jpg';
+    
+    // Если URL содержит склеенные ссылки
+    if (url.includes('https') && url.split('https').length > 2) {
+        // Разделяем по 'https'
+        const parts = url.split('https');
+        // Берём вторую часть (индекс 2, т.к. parts[0] пустой)
+        let secondPart = parts[2];
+        
+        // Заменяем %3A/ на ://
+        secondPart = secondPart.replace('%3A/', '://');
+        
+        // Собираем правильный URL
+        return 'https' + secondPart;
+    }
+    
+    return url;
+}
+
 class ProductsManager {
     constructor(options = {}) {
         // ID категории (берём из настроек страницы)
@@ -140,37 +160,80 @@ class ProductsManager {
     /**
      * Создание карточки товара
      */
+    // createProductCard(product) {
+    //     const card = document.createElement('div');
+    //     card.className = 'product-card';
+    //     card.dataset.productId = product.id;
+
+    //     // Получаем первое изображение
+    //     // const mainImage = product.images && product.images.length > 0
+    //     //     ? product.images[0].image
+    //     //     : '/images/placeholder.jpg'; // Путь к заглушке
+
+    //     // Получаем правильный URL картинки
+    //     let mainImage = '/images/placeholder.jpg';
+    //     if (product.images && product.images.length > 0) {
+    //         let imageUrl = product.images[0].image;
+            
+    //         // Фикс склеенных URL
+    //         if (imageUrl.includes('https://') && imageUrl.match(/https:\/\//g).length > 1) {
+    //             const parts = imageUrl.split('https://');
+    //             imageUrl = 'https://' + parts[2];
+    //         }
+            
+    //         mainImage = imageUrl;
+    //     }
+
+    //     // Определяем есть ли бейдж
+    //     let badgeHTML = '';
+    //     if (product.status_display && product.status !== 'in_stock') {
+    //         const badgeClass = product.status === 'new' ? 'new' : 'sale';
+    //         badgeHTML = `<div class="product-badge ${badgeClass}">${product.status_display}</div>`;
+    //     }
+
+    //     card.innerHTML = `
+    //         <div class="product-image-container">
+    //             ${badgeHTML}
+    //             <img 
+    //                 src="${mainImage}" 
+    //                 alt="${product.title}"
+    //                 class="product-image"
+    //                 loading="lazy"
+    //             >
+    //         </div>
+    //         <div class="product-info">
+    //             <div class="product-category">${product.category_name || 'Без категории'}</div>
+    //             <h3 class="product-title">${product.title}</h3>
+    //             <div class="product-price">${this.formatPrice(product.price)}</div>
+    //         </div>
+    //     `;
+
+    //     // Обработчик клика - переход на детальную страницу
+    //     card.addEventListener('click', () => {
+    //         this.openProductDetail(product.id);
+    //     });
+
+    //     return card;
+    // }
+
     createProductCard(product) {
         const card = document.createElement('div');
         card.className = 'product-card';
         card.dataset.productId = product.id;
-
-        // Получаем первое изображение
-        // const mainImage = product.images && product.images.length > 0
-        //     ? product.images[0].image
-        //     : '/images/placeholder.jpg'; // Путь к заглушке
-
+    
         // Получаем правильный URL картинки
         let mainImage = '/images/placeholder.jpg';
         if (product.images && product.images.length > 0) {
-            let imageUrl = product.images[0].image;
-            
-            // Фикс склеенных URL
-            if (imageUrl.includes('https://') && imageUrl.match(/https:\/\//g).length > 1) {
-                const parts = imageUrl.split('https://');
-                imageUrl = 'https://' + parts[2];
-            }
-            
-            mainImage = imageUrl;
+            mainImage = fixImageUrl(product.images[0].image);
         }
-
-        // Определяем есть ли бейдж
+    
+        // Определяем бейдж
         let badgeHTML = '';
         if (product.status_display && product.status !== 'in_stock') {
             const badgeClass = product.status === 'new' ? 'new' : 'sale';
             badgeHTML = `<div class="product-badge ${badgeClass}">${product.status_display}</div>`;
         }
-
+    
         card.innerHTML = `
             <div class="product-image-container">
                 ${badgeHTML}
@@ -179,6 +242,7 @@ class ProductsManager {
                     alt="${product.title}"
                     class="product-image"
                     loading="lazy"
+                    onerror="this.src='/images/placeholder.jpg'"
                 >
             </div>
             <div class="product-info">
@@ -187,12 +251,11 @@ class ProductsManager {
                 <div class="product-price">${this.formatPrice(product.price)}</div>
             </div>
         `;
-
-        // Обработчик клика - переход на детальную страницу
+    
         card.addEventListener('click', () => {
             this.openProductDetail(product.id);
         });
-
+    
         return card;
     }
 
