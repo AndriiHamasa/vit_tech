@@ -3,6 +3,26 @@
  * Работает с галереей, характеристиками и слайдером
  */
 
+function fixImageUrl(url) {
+    if (!url) return '/images/placeholder.jpg';
+    
+    // Если URL содержит склеенные ссылки
+    if (url.includes('https') && url.split('https').length > 2) {
+        // Разделяем по 'https'
+        const parts = url.split('https');
+        // Берём вторую часть (индекс 2, т.к. parts[0] пустой)
+        let secondPart = parts[2];
+        
+        // Заменяем %3A/ на ://
+        secondPart = secondPart.replace('%3A/', '://');
+        
+        // Собираем правильный URL
+        return 'https' + secondPart;
+    }
+    
+    return url;
+}
+
 class ProductDetailManager {
     constructor() {
         this.productId = this.getProductId();
@@ -25,18 +45,18 @@ class ProductDetailManager {
         
     //     return url;
     // }
-    fixImageUrl(url) {
-        if (!url) return '/images/placeholder.jpg';
+    // fixImageUrl(url) {
+    //     if (!url) return '/images/placeholder.jpg';
         
-        if (url.includes('https') && url.split('https').length > 2) {
-            const parts = url.split('https');
-            let secondPart = parts[2];
-            secondPart = secondPart.replace('%3A/', '://');
-            return 'https' + secondPart;
-        }
+    //     if (url.includes('https') && url.split('https').length > 2) {
+    //         const parts = url.split('https');
+    //         let secondPart = parts[2];
+    //         secondPart = secondPart.replace('%3A/', '://');
+    //         return 'https' + secondPart;
+    //     }
         
-        return url;
-    }
+    //     return url;
+    // }
 
     /**
      * Получить ID товара из URL
